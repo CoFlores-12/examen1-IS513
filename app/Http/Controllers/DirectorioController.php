@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Directorio;
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 
 class DirectorioController extends Controller
@@ -36,7 +37,21 @@ class DirectorioController extends Controller
     public function buscarPost(Request $request){
         $correo = $request->correo;
         $directorio = Directorio::where('correo', $correo)->first();
-        //return view('vercontactos', compact('directorio'));
-        return $directorio;
+        if(!$directorio){
+            return redirect()->route('directorio.inicio');
+        }
+        return redirect()->route('contacto.inicio', $directorio->codigoEntrada);
+    }
+
+    public function eliminar($codigoEntrada){
+        $directorio = Directorio::find($codigoEntrada);
+        return view('eliminar', compact('directorio'));
+    }
+
+    public function eliminarConfirmado($codigoEntrada){
+        $contactos = Contacto::where('codigoEntrada', $codigoEntrada)->delete();
+        $directorio = Directorio::find($codigoEntrada);
+        $directorio->delete();
+        return redirect()->route('directorio.inicio');
     }
 }

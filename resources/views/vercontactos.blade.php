@@ -37,22 +37,23 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="card">
                             <h3 class="card-header">Lista de contactos</h3>
                             <div class="card-body">
                                 <p class="card-text">
                                     <label for="">C&oacute;digo</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input type="text" class="form-control" readonly value={{$directorio->codigoEntrada}}>
                                     <label for="">Nombre</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input type="text" class="form-control" readonly value={{$directorio->nombre}}>
                                     <label for="">Apellido</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input type="text" class="form-control" readonly value={{$directorio->apellido}}>
 
                                     <p>
-                                        <button class="btn btn-primary">Agregar nuevo contacto</button>
-                                        <a href="#" class="btn btn-info">Regresar</a>
+                                       
+                                        <a href="{{route('contacto.crear', $directorio->codigoEntrada)}}" > <button class="btn btn-primary">Agregar nuevo contacto</button></a>
+                                        <a href="{{route('directorio.inicio')}}" class="btn btn-info">Regresar</a>
                                     </p>
 
                                     <table class="table">
@@ -64,15 +65,17 @@
                                             <th scope="col">Eliminar</th>
                                         </thead>
                                         <tbody>
+                                            @foreach($contactos as $contacto)
                                                 <tr>
-                                                    <td>1</td>                                                    
-                                                    <td>Julio</td>
-                                                    <td>Cortez</td>
-                                                    <td>9999</td>                                                    
+                                                    <td>{{$contacto->id}}</td>                                                    
+                                                    <td>{{$contacto->nombre}}</td>
+                                                    <td>{{$contacto->apellido}}</td>
+                                                    <td>{{$contacto->telefono}}<td>                                                    
                                                     <td>
-                                                        <a href="#" class="btn btn-danger">Eliminar</a>
+                                                        <a href="{{route('contacto.eliminar', $contacto->id)}}" class="btn btn-danger">Eliminar</a>
                                                     </td>
                                                 </tr>
+                                            @endforeach
                                         </tbody>
 
                                     

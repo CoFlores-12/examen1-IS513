@@ -39,10 +39,10 @@
                                 <td>{{$directorio->apellido}}</td>
                                 <td>{{$directorio->telefono}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-info">Ver</a>
+                                    <a href="{{route('contacto.inicio', $directorio->codigoEntrada)}}" class="btn btn-info">Ver</a>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-danger">Eliminar</a>
+                                    <a href="{{route('directorio.eliminar', $directorio->codigoEntrada)}}" class="btn btn-danger">Eliminar</a>
                                 </td>
                             </tr>
                         @endforeach

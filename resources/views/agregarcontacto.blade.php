@@ -37,15 +37,17 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="mt-8 bg-white  overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="card">
                             <h3 class="card-header">Agregar Contacto</h3>
                             <div class="card-body">
                                 <p class="card-text">
-                                    <form>
+                                    <form action="{{route('contacto.guardar', $codigoEntrada)}}" method="post">
+                                        @csrf
+                                        @method('POST')
                                         <label for="">C&oacute;digo de entrada</label>
-                                        <input type="text" name="codigo" class="form-control" readonly>
+                                        <input type="text" name="codigo" class="form-control" readonly value={{$codigoEntrada}}>
                                         <label for="">Nombre</label>
                                         <input type="text" name="nombre" class="form-control">
                                         <label for="">Apellido</label>
@@ -54,7 +56,7 @@
                                         <input type="text" name="telefono" class="form-control">
                                         
                                         <button class="btn btn-primary">Guardar</button>
-                                        <a href="#" class="btn btn-info">Regresar</a>
+                                        <a href="{{route('contacto.inicio', $codigoEntrada)}}" class="btn btn-info">Regresar</a>
                                         
                                     </form>
                                 </p>
