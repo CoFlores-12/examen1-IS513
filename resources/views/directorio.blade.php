@@ -18,8 +18,8 @@
                 <div class="p-6">
 
                 <p>
-                    <a href="#" class="btn btn-primary">Agregar nuevo</a>
-                    <a href="#" class="btn btn-success">Buscar</a>
+                    <a href="{{route('directorio.crear')}}" class="btn btn-primary">Agregar nuevo</a>
+                    <a href="{{route('directorio.buscar')}}" class="btn btn-success">Buscar</a>
                 </p>
 
                 <table class="table">
@@ -32,11 +32,12 @@
                         <th scope="col">Eliminar</th>
                     </thead>
                     <tbody>
+                        @foreach($directorios as $directorio)
                             <tr>
-                                <td>0001</td>
-                                <td>Julio</td>
-                                <td>Cortez</td>
-                                <td>9999</td>
+                                <td>{{$directorio->codigoEntrada}}</td>
+                                <td>{{$directorio->nombre}}</td>
+                                <td>{{$directorio->apellido}}</td>
+                                <td>{{$directorio->telefono}}</td>
                                 <td>
                                     <a href="#" class="btn btn-info">Ver</a>
                                 </td>
@@ -44,6 +45,7 @@
                                     <a href="#" class="btn btn-danger">Eliminar</a>
                                 </td>
                             </tr>
+                        @endforeach
                     </tbody>
 
                 </table>

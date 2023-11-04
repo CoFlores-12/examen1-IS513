@@ -37,15 +37,18 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="mt-8 bg-whiteoverflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="card">
                             <h3 class="card-header">Crear Nueva Entrada Directorio</h3>
                             <div class="card-body">
                                 <p class="card-text">
-                                    <form>
+                                    <form action="{{route('directorio.guardar')}}" method="POST">
+                                        @csrf
+                                        @method('POST')
+
                                         <label for="">C&oacute;digo</label>
-                                        <input type="text" name="codigo" class="form-control">
+                                        <input type="text" name="codigoEntrada" class="form-control">
                                         <label for="">Nombre</label>
                                         <input type="text" name="nombre" class="form-control">
                                         <label for="">Apellido</label>
@@ -57,7 +60,7 @@
                                         
                                         
                                         <button class="btn btn-primary">Guardar</button>
-                                        <a href="#" class="btn btn-info">Regresar</a>
+                                        <a href="{{route('directorio.inicio')}}" class="btn btn-info">Regresar</a>
                                         
                                     </form>
                                 </p>
